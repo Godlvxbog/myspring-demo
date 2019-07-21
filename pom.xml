@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.gupaoedu.vip</groupId>
-    <artifactId>spring-vip-spring</artifactId>
+    <groupId>com.xbog</groupId>
+    <artifactId>spring-demo</artifactId>
     <version>2.0</version>
 
 
@@ -24,18 +24,16 @@
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
             <version>${servlet.api.version}</version>
-            <scope>provided</scope>
         </dependency>
         <!-- requied end -->
 
 
         <!-- https://mvnrepository.com/artifact/javax.servlet/jsp-api -->
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>jsp-api</artifactId>
-            <version>2.2</version>
-            <scope>provided</scope>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>javax.servlet</groupId>-->
+            <!--<artifactId>jsp-api</artifactId>-->
+            <!--<version>2.2</version>-->
+        <!--</dependency>-->
 
         <dependency>
             <groupId>org.mortbay.jetty</groupId>
@@ -115,7 +113,7 @@
                     <contextPath>/</contextPath>
                     <connectors>
                         <connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
-                            <port>80</port>
+                            <port>83</port>
                         </connector>
                     </connectors>
                     <scanIntervalSeconds>0</scanIntervalSeconds>

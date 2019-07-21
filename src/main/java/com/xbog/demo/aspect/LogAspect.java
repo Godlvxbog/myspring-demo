@@ -1,8 +1,11 @@
 package com.xbog.demo.aspect;
 
+import com.xbog.framework.annotation.GPService;
+
 /**
  * Created by Tom on 2018/5/2.
  */
+@GPService
 public class LogAspect {
 
     //在调用一个方法之前，执行before方法

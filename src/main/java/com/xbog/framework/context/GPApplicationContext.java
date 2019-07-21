@@ -273,6 +273,12 @@ public class GPApplicationContext extends GPDefaultListableBeanFactory implement
 
 
 
+    public Object getBeanInstance(String instanceName){
+        return beanCacheMap.get(instanceName);
+    }
+
+
+
 
     public String[] getBeanDefinitionNames() {
         return this.beanDefinitionMap.keySet().toArray(new String[this.beanDefinitionMap.size()]);
