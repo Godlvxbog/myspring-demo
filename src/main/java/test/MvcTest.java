@@ -1,15 +1,19 @@
 package test;
 
+import com.xbog.framework.context.GPApplicationContext;
 import com.xbog.framework.webmvc.servlet.GPDispatcherServlet;
 
 import javax.servlet.ServletException;
 
+
 public class MvcTest {
     public static void main(String[] args) throws ServletException {
-        GPDispatcherServlet dispatcherServlet = new GPDispatcherServlet();
 
-        dispatcherServlet.init();
-        System.out.println(1);
+        GPApplicationContext context = new GPApplicationContext("classpath:application.properties");
+        GPDispatcherServlet gpDispatcherServlet = (GPDispatcherServlet) context.getBeanInstance("com.xbog.framework.webmvc.servlet.GPDispatcherServlet");
+
+//        initStrategies(context);
+        System.out.println("http://localhost:8080/web/addTeacher.json?name=zhangshan&addr=sicuan");
 
     }
 }
