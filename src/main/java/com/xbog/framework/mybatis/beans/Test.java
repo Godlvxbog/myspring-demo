@@ -1,8 +1,8 @@
 package com.xbog.framework.mybatis.beans;
 
-//import lombok.Data;
-//
-//@Data
+import lombok.Data;
+
+@Data
 public class Test {
     private Integer id;
 

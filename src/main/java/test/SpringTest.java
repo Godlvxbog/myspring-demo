@@ -1,7 +1,7 @@
 package test;
 
 import com.xbog.demo.action.MyAction;
-import com.xbog.framework.context.GPApplicationContext;
+import com.xbog.framework.spring.context.GPApplicationContext;
 import com.xbog.framework.webmvc.servlet.GPDispatcherServlet;
 
 public class SpringTest {

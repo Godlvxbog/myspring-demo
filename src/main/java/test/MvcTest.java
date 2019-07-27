@@ -1,6 +1,6 @@
 package test;
 
-import com.xbog.framework.context.GPApplicationContext;
+import com.xbog.framework.spring.context.GPApplicationContext;
 import com.xbog.framework.webmvc.servlet.GPDispatcherServlet;
 
 import javax.servlet.ServletException;

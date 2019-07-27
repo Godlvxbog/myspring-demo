@@ -1,10 +1,10 @@
 package com.xbog.framework.webmvc.servlet;
 
-import com.xbog.framework.annotation.GPController;
-import com.xbog.framework.annotation.GPRequestMapping;
-import com.xbog.framework.annotation.GPRequestParam;
-import com.xbog.framework.aop.GPAopProxyUtils;
-import com.xbog.framework.context.GPApplicationContext;
+import com.xbog.framework.spring.annotation.GPController;
+import com.xbog.framework.spring.annotation.GPRequestMapping;
+import com.xbog.framework.spring.annotation.GPRequestParam;
+import com.xbog.framework.spring.aop.GPAopProxyUtils;
+import com.xbog.framework.spring.context.GPApplicationContext;
 import com.xbog.framework.webmvc.GPHandlerAdapter;
 import com.xbog.framework.webmvc.GPHandlerMapping;
 import com.xbog.framework.webmvc.GPModelAndView;

@@ -23,7 +23,7 @@ public class JDBCDemo {
         PreparedStatement preparedStatement = null;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/gp?useUnicode=true&characterEncoding=utf-8&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "123456");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/xbogBatis?useUnicode=true&characterEncoding=utf-8&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "123456");
             connection.setAutoCommit(false);
             preparedStatement = connection.prepareStatement("INSERT INTO test VALUES (?,?,?)");
             if (null != test.getId()) {
@@ -57,7 +57,7 @@ public class JDBCDemo {
         Test test = null;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/gp?useUnicode=true&characterEncoding=utf-8&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "123456");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/xbogBatis?useUnicode=true&characterEncoding=utf-8&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "123456");
             preparedStatement = connection.prepareStatement("SELECT * FROM test WHERE id = ?");
             preparedStatement.setInt(1, id);
             ResultSet rs = preparedStatement.executeQuery();

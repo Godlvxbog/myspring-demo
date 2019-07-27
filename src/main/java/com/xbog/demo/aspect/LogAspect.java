@@ -1,6 +1,6 @@
 package com.xbog.demo.aspect;
 
-import com.xbog.framework.annotation.GPService;
+import com.xbog.framework.spring.annotation.GPService;
 
 /**
  * Created by Tom on 2018/5/2.

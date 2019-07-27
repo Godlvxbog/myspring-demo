@@ -1,7 +1,7 @@
 package com.xbog.demo.service.impl;
 
 import com.xbog.demo.service.IModifyService;
-import com.xbog.framework.annotation.GPService;
+import com.xbog.framework.spring.annotation.GPService;
 
 /**
  * 增删改业务

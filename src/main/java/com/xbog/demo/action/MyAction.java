@@ -7,10 +7,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.xbog.demo.service.IModifyService;
 import com.xbog.demo.service.IQueryService;
-import com.xbog.framework.annotation.GPAutowired;
-import com.xbog.framework.annotation.GPController;
-import com.xbog.framework.annotation.GPRequestMapping;
-import com.xbog.framework.annotation.GPRequestParam;
+import com.xbog.framework.spring.annotation.GPAutowired;
+import com.xbog.framework.spring.annotation.GPController;
+import com.xbog.framework.spring.annotation.GPRequestMapping;
+import com.xbog.framework.spring.annotation.GPRequestParam;
 import com.xbog.framework.webmvc.GPModelAndView;
 
 /**

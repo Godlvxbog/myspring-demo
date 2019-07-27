@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import com.xbog.demo.service.IQueryService;
-import com.xbog.framework.annotation.GPService;
+import com.xbog.framework.spring.annotation.GPService;
 
 /**
  * 查询业务
