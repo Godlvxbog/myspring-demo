@@ -4,6 +4,8 @@ import lombok.Data;
 
 @Data
 public class Test {
+
+
     private Integer id;
 
     private Integer nums;
@@ -18,6 +20,10 @@ public class Test {
 
     public Test() {
 
+    }
+
+    public void show1(String s){
+        System.out.println("========="+ s);
     }
 
     public Integer getId() {

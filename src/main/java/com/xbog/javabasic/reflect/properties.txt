@@ -1,0 +1,2 @@
+className =com.xbog.framework.mybatis.beans.Test
+methodName = show1
