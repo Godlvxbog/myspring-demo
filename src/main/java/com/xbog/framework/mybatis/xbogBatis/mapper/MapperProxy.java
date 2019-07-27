@@ -22,25 +22,32 @@ public class MapperProxy<T> implements InvocationHandler {
         this.mappperInterface = clazz;
     }
 
-    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+    public Object invoke(Object target, Method method, Object[] args) throws Throwable {
 
         MapperRegistory mapperRegistory = sqlSession.getConfiguration().getMapperRegistory();
 
-        System.out.println("method.getDeclaringClass().getName() = " + method.getDeclaringClass().getName());
-        System.out.println("method.getName() = " + method.getName());
-        String namespace=method.getDeclaringClass().getName()+ "." + method.getName();
-        System.out.println(namespace);
+//        String namespace=method.getDeclaringClass().getName()+ "." + method.getName();
+        String namespace ="com.xbog.framework.mybatis.mapper.TestMapper.selectByPrimaryKey";
 
         MapperData mapperData = mapperRegistory.get(namespace);
 
-        System.out.println(mapperData);
         if (null != mapperData) {
             System.out.println(String.format("SQL [ %s ], parameter [%s] ", mapperData.getSql(), args[0]));
             return sqlSession.selectOne(mapperData, String.valueOf(args[0]));
         }
+
 //        调用target
-        Object object = method.invoke(proxy, args);
+        Object object = method.invoke(this.mappperInterface, args);
 
         return object;
+    }
+
+
+    public GpSqlSession getSqlSession() {
+        return sqlSession;
+    }
+
+    public Class<T> getMappperInterface() {
+        return mappperInterface;
     }
 }

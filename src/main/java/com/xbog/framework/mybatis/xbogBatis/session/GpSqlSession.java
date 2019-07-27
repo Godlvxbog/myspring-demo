@@ -35,20 +35,6 @@ public class GpSqlSession {
 
         Class<?>[] interfaces =clazz.getInterfaces();//接口
 
-
-        MapperRegistory mapperRegistory = getConfiguration().getMapperRegistory();
-
-        String namespace ="com.xbog.framework.mybatis.mapper.TestMapper.selectByPrimaryKey";
-        MapperData mapperData = mapperRegistory.get(namespace);
-
-        System.out.println(mapperData);
-//        if (null != mapperData) {
-//            System.out.println(String.format("SQL [ %s ], parameter [%s] ", mapperData.getSql(), "1"));
-//            return selectOne(mapperData, String.valueOf("1"));
-//        }
-
-
-
         T t = (T) Proxy.newProxyInstance(classLoader,interfaces,mapperProxy);
 
         return t;

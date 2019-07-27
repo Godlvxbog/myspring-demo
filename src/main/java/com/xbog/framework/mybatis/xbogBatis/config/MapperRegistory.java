@@ -2,7 +2,7 @@ package com.xbog.framework.mybatis.xbogBatis.config;
 
 
 
-import test.Test;
+import com.xbog.framework.mybatis.beans.Test;
 
 import java.util.HashMap;
 import java.util.Map;

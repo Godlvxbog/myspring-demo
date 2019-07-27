@@ -5,6 +5,7 @@ import com.xbog.framework.mybatis.beans.Test;
 import com.xbog.framework.mybatis.mapper.TestMapper;
 import com.xbog.framework.mybatis.xbogBatis.config.GpConfiguration;
 import com.xbog.framework.mybatis.xbogBatis.executor.Executor;
+import com.xbog.framework.mybatis.xbogBatis.mapper.MapperProxy;
 import com.xbog.framework.mybatis.xbogBatis.session.GpSqlSession;
 import com.xbog.framework.mybatis.xbogBatis.executor.ExecutorFactory;
 
@@ -27,12 +28,9 @@ public class BootStrap {
         GpSqlSession sqlSession = new GpSqlSession(configuration,executor);
 
         TestMapper testMapper = sqlSession.getMapper(TestMapper.class);
-        long start = System.currentTimeMillis();
+
         Test test = testMapper.selectByPrimaryKey(2);
-        System.out.println("cost:"+ (System.currentTimeMillis() -start));
-//        start = System.currentTimeMillis();
-//        test = testMapper.selectByPrimaryKey(1);
-//        System.out.println("cost:"+ (System.currentTimeMillis() -start));
+
         System.out.println(test);
     }
 }
