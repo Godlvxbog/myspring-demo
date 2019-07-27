@@ -4,6 +4,7 @@ package com.xbog.framework.mybatis.xbogBatis;
 import com.xbog.framework.mybatis.beans.Test;
 import com.xbog.framework.mybatis.mapper.TestMapper;
 import com.xbog.framework.mybatis.xbogBatis.config.GpConfiguration;
+import com.xbog.framework.mybatis.xbogBatis.config.MapperData;
 import com.xbog.framework.mybatis.xbogBatis.executor.Executor;
 import com.xbog.framework.mybatis.xbogBatis.mapper.MapperProxy;
 import com.xbog.framework.mybatis.xbogBatis.session.GpSqlSession;
@@ -27,9 +28,8 @@ public class BootStrap {
         Executor executor  = ExecutorFactory.get(exectorKey,configuration);
         GpSqlSession sqlSession = new GpSqlSession(configuration,executor);
 
-        TestMapper testMapper = sqlSession.getMapper(TestMapper.class);
-
-        Test test = testMapper.selectByPrimaryKey(2);
+        MapperData mapperData = sqlSession.getConfiguration().getMapperRegistory().get("com.xbog.framework.mybatis.mapper.TestMapper.selectByPrimaryKey");
+        Test test = sqlSession.selectOne(mapperData, "2");
 
         System.out.println(test);
     }

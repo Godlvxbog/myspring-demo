@@ -1,6 +1,7 @@
 package com.xbog.framework.mybatis.xbogBatis.result;
 
 
+import com.xbog.framework.mybatis.beans.Test;
 import com.xbog.framework.mybatis.xbogBatis.config.GpConfiguration;
 import com.xbog.framework.mybatis.xbogBatis.config.MapperData;
 import com.xbog.framework.mybatis.xbogBatis.config.MapperRegistory;
@@ -25,9 +26,10 @@ public class ResultSetHandler {
         this.configuration = configuration;
     }
 
-    public <E> E handle(PreparedStatement pstmt, MapperData mapperData) throws SQLException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        Object resultObj =new Object();
+    public <E> E handle(PreparedStatement pstmt, MapperData mapperData) throws SQLException, NoSuchMethodException, InvocationTargetException, IllegalAccessException, InstantiationException {
+        Object resultObj =mapperData.getType().newInstance();
         ResultSet rs = pstmt.getResultSet();
+//        Class clz = Test.class;
         if (rs.next()) {
             int i = 0;
             for (Field field : resultObj.getClass().getDeclaredFields()) {

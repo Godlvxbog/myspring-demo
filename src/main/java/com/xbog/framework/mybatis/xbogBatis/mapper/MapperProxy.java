@@ -1,6 +1,8 @@
 package com.xbog.framework.mybatis.xbogBatis.mapper;
 
 
+import com.xbog.framework.mybatis.beans.Test;
+import com.xbog.framework.mybatis.mapper.TestMapper;
 import com.xbog.framework.mybatis.xbogBatis.config.MapperData;
 import com.xbog.framework.mybatis.xbogBatis.session.GpSqlSession;
 import com.xbog.framework.mybatis.xbogBatis.config.MapperRegistory;
@@ -30,6 +32,7 @@ public class MapperProxy<T> implements InvocationHandler {
         String namespace ="com.xbog.framework.mybatis.mapper.TestMapper.selectByPrimaryKey";
 
         MapperData mapperData = mapperRegistory.get(namespace);
+//        System.out.println(mapperData);
 
         if (null != mapperData) {
             System.out.println(String.format("SQL [ %s ], parameter [%s] ", mapperData.getSql(), args[0]));
@@ -37,17 +40,9 @@ public class MapperProxy<T> implements InvocationHandler {
         }
 
 //        调用target
-        Object object = method.invoke(this.mappperInterface, args);
+        Object object = method.invoke(target, args);
 
         return object;
     }
 
-
-    public GpSqlSession getSqlSession() {
-        return sqlSession;
-    }
-
-    public Class<T> getMappperInterface() {
-        return mappperInterface;
-    }
 }
