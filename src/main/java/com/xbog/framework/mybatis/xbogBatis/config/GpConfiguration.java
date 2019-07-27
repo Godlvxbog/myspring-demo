@@ -28,7 +28,7 @@ public class GpConfiguration {
     }
 
     public static void main(String[] args) throws IOException {
-        new GpConfiguration().scanPath("/Users/xbog/Documents/code/spring-demo/src/main/resources/xml/TestMapper.xml").build();
+        new GpConfiguration().scanPath("/Users/xbog/Documents/code/spring-demo/src/main/resources/mybatis/mapper/TestMapper.xml").build();
     }
 
     public String getScanPath() {

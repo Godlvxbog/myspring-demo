@@ -2,6 +2,7 @@ package com.xbog.framework.mybatis.xbogBatis.statement;
 
 
 import com.xbog.framework.mybatis.xbogBatis.config.GpConfiguration;
+import com.xbog.framework.mybatis.xbogBatis.config.MapperData;
 import com.xbog.framework.mybatis.xbogBatis.config.MapperRegistory;
 import com.xbog.framework.mybatis.xbogBatis.result.ResultSetHandler;
 
@@ -24,7 +25,7 @@ public class StatementHandler {
         resultSetHandler = new ResultSetHandler(configuration);
     }
 
-    public <E> E query(MapperRegistory.MapperData mapperData, Object parameter) throws Exception {
+    public <E> E query(MapperData mapperData, Object parameter) throws Exception {
         try {
             //JDBC
             Connection conn = getConnection();
@@ -42,10 +43,10 @@ public class StatementHandler {
 
 
     public Connection getConnection() throws SQLException {
-        String driver = "com.mysql.cj.jdbc.Driver";
-        String url = "jdbc:mysql://localhost:3306/xbogBatis?useUnicode=true&characterEncoding=utf-8&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+        String driver = "com.mysql.jdbc.Driver";
+        String url = "jdbc:mysql://localhost:3306/gp";
         String username = "root";
-        String password = "123456";
+        String password = "laowei";
         Connection conn = null;
         try {
             Class.forName(driver); //classLoader,加载对应驱动

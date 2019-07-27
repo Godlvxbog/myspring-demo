@@ -1,7 +1,7 @@
 package com.xbog.framework.mybatis.xbogBatis.executor;
 
 import com.xbog.framework.mybatis.xbogBatis.config.GpConfiguration;
-import com.xbog.framework.mybatis.xbogBatis.config.MapperRegistory;
+import com.xbog.framework.mybatis.xbogBatis.config.MapperData;
 import com.xbog.framework.mybatis.xbogBatis.statement.StatementHandler;
 
 import java.util.HashMap;
@@ -22,7 +22,7 @@ public class CachingExecutor implements Executor {
         this.configuration = configuration;
     }
 
-    public <E> E query(MapperRegistory.MapperData mapperData, Object parameter)
+    public <E> E query(MapperData mapperData, Object parameter)
             throws Exception {
         //初始化StatementHandler --> ParameterHandler --> ResultSetHandler
         StatementHandler handler = new StatementHandler(configuration);

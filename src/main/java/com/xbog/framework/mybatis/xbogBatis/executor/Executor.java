@@ -1,7 +1,7 @@
 package com.xbog.framework.mybatis.xbogBatis.executor;
 
 
-import com.xbog.framework.mybatis.xbogBatis.config.MapperRegistory;
+import com.xbog.framework.mybatis.xbogBatis.config.MapperData;
 
 /**
  * Created by James on 2017-07-01.
@@ -10,5 +10,5 @@ import com.xbog.framework.mybatis.xbogBatis.config.MapperRegistory;
  */
 public interface Executor {
 
-    <T> T query(MapperRegistory.MapperData mapperData, Object parameter) throws Exception;
+    <T> T query(MapperData mapperData, Object parameter) throws Exception;
 }

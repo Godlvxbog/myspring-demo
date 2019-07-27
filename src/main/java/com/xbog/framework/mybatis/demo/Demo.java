@@ -19,7 +19,7 @@ public class Demo {
     public static SqlSession getSqlSession() throws FileNotFoundException {
         //配置文件
         InputStream configFile = new FileInputStream(
-                "/Users/xbog/Documents/code/spring-demo/src/main/java/com/xbog/framework/mybatis/demo/mybatis-config.xml");
+                "/Users/xbog/Documents/code/spring-demo/src/main/resources/mybatis/mybatis-config.xml");
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(configFile);
         //加载配置文件得到SqlSessionFactory
         SqlSession session = sqlSessionFactory.openSession();
@@ -28,7 +28,8 @@ public class Demo {
     }
 
     public static void main(String[] args) throws FileNotFoundException {
-        TestMapper testMapper = getSqlSession().getMapper(TestMapper.class);
+        SqlSession session =getSqlSession();
+        TestMapper testMapper =session.getMapper(TestMapper.class);
         Test test = testMapper.selectByPrimaryKey(1);
         System.out.println(test);
     }

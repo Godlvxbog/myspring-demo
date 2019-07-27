@@ -51,11 +51,6 @@
             <version>3.4.2</version>
         </dependency>
 
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.43</version>
-        </dependency>
 
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -186,7 +181,7 @@
                 <artifactId>mybatis-generator-maven-plugin</artifactId>
                 <version>1.3.3</version>
                 <configuration>
-                    <configurationFile>${project.basedir}/src/main/resources/generator/generatorConfig.xml</configurationFile>
+                    <configurationFile>src/main/resources/mybatis/mapper/generator/generatorConfig.xml</configurationFile>
                     <overwrite>true</overwrite>
                 </configuration>
             </plugin>

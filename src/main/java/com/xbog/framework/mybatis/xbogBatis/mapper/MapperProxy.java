@@ -1,6 +1,7 @@
 package com.xbog.framework.mybatis.xbogBatis.mapper;
 
 
+import com.xbog.framework.mybatis.xbogBatis.config.MapperData;
 import com.xbog.framework.mybatis.xbogBatis.session.GpSqlSession;
 import com.xbog.framework.mybatis.xbogBatis.config.MapperRegistory;
 
@@ -22,14 +23,24 @@ public class MapperProxy<T> implements InvocationHandler {
     }
 
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        MapperRegistory.MapperData mapperData =
-                sqlSession.getConfiguration()
-                        .getMapperRegistory()
-                        .get(method.getDeclaringClass().getName() + "." + method.getName());
+
+        MapperRegistory mapperRegistory = sqlSession.getConfiguration().getMapperRegistory();
+
+        System.out.println("method.getDeclaringClass().getName() = " + method.getDeclaringClass().getName());
+        System.out.println("method.getName() = " + method.getName());
+        String namespace=method.getDeclaringClass().getName()+ "." + method.getName();
+        System.out.println(namespace);
+
+        MapperData mapperData = mapperRegistory.get(namespace);
+
+        System.out.println(mapperData);
         if (null != mapperData) {
             System.out.println(String.format("SQL [ %s ], parameter [%s] ", mapperData.getSql(), args[0]));
             return sqlSession.selectOne(mapperData, String.valueOf(args[0]));
         }
-        return method.invoke(proxy, args);
+//        调用target
+        Object object = method.invoke(proxy, args);
+
+        return object;
     }
 }
