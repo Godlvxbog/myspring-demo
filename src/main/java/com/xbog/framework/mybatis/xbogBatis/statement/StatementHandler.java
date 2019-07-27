@@ -43,7 +43,7 @@ public class StatementHandler {
 
 
     public Connection getConnection() throws SQLException {
-        String driver = "com.mysql.jdbc.Driver";
+        String driver = "com.mysql.cj.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/gp";
         String username = "root";
         String password = "laowei";
