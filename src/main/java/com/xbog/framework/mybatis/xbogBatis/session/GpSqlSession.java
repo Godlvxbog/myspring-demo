@@ -28,8 +28,11 @@ public class GpSqlSession {
     }
 
     public <T> T getMapper(Class<T> clazz) throws Exception{
-        return (T) Proxy.newProxyInstance(clazz.getClassLoader(),
-                new Class[]{clazz},new MapperProxy(this,clazz));
+        ClassLoader classLoader =clazz.getClassLoader();
+
+        MapperProxy mapperProxy = new MapperProxy(this,clazz);
+
+        return (T) Proxy.newProxyInstance(classLoader,new Class[]{clazz},mapperProxy);
     }
 
     public <T> T selectOne(MapperData mapperData, Object parameter) throws Exception {

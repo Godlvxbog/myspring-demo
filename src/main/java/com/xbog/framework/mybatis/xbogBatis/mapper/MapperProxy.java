@@ -28,11 +28,9 @@ public class MapperProxy<T> implements InvocationHandler {
 
         MapperRegistory mapperRegistory = sqlSession.getConfiguration().getMapperRegistory();
 
-//        String namespace=method.getDeclaringClass().getName()+ "." + method.getName();
-        String namespace ="com.xbog.framework.mybatis.mapper.TestMapper.selectByPrimaryKey";
+        String namespace=method.getDeclaringClass().getName()+ "." + method.getName();
 
         MapperData mapperData = mapperRegistory.get(namespace);
-//        System.out.println(mapperData);
 
         if (null != mapperData) {
             System.out.println(String.format("SQL [ %s ], parameter [%s] ", mapperData.getSql(), args[0]));
