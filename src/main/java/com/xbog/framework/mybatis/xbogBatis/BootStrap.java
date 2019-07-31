@@ -20,7 +20,7 @@ public class BootStrap {
 
     private static void start() throws Exception {
         GpConfiguration configuration = new GpConfiguration();
-        configuration.setScanPath("com.xbog.framework.mybatis.mapper");
+        configuration.setScanPath("com.xbog.demo.mybatis.mapper");
         configuration.build();
         String exectorKey = ExecutorFactory.ExecutorType.SIMPLE.name();
         Executor executor  = ExecutorFactory.get(exectorKey,configuration);

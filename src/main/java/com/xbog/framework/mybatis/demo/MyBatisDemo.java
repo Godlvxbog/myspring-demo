@@ -1,4 +1,4 @@
-//package com.xbog.framework.mybatis.mybatis.demo;
+//package com.xbog.demo.mybatis.mybatis.demo;
 //
 //
 //import org.apache.ibatis.session.SqlSession;
