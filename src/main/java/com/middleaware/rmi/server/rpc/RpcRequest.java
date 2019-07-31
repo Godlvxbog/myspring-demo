@@ -1,6 +1,7 @@
 package com.middleaware.rmi.server.rpc;
 
 import java.io.Serializable;
+import java.util.Arrays;
 
 /**
  * 腾讯课堂搜索 咕泡学院
@@ -37,5 +38,15 @@ public class RpcRequest implements Serializable {
 
     public void setParameters(Object[] parameters) {
         this.parameters = parameters;
+    }
+
+
+    @Override
+    public String toString() {
+        return "RpcRequest{" +
+                "className='" + className + '\'' +
+                ", methodName='" + methodName + '\'' +
+                ", parameters=" + Arrays.toString(parameters) +
+                '}';
     }
 }

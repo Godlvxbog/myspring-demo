@@ -11,4 +11,10 @@ public class GpHelloImpl implements IGpHello{
     public String sayHello(String msg) {
         return "Hello , "+msg;
     }
+
+    @Override
+    public String rating(Double serviceAmount, Double rate) {
+        return String.valueOf("billAmount = " +serviceAmount * rate);
+    }
+
 }

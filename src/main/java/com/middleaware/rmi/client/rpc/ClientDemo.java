@@ -1,6 +1,6 @@
 package com.middleaware.rmi.client.rpc;
 
-import com.middleaware.rmi.server.IHelloService;
+import com.middleaware.rmi.server.rpc.IGpHello;
 
 import java.io.IOException;
 
@@ -14,12 +14,12 @@ public class ClientDemo {
     public static void main(String[] args) throws IOException {
         RpcClientProxy rpcClientProxy=new RpcClientProxy();
 
-        IHelloService hello= null;
+        IGpHello hello= null;
 
         try {
             hello = rpcClientProxy.clientProxy
-                    (IHelloService.class,"127.0.0.1",1099);
-            System.out.println(hello.sayHello("mic"));
+                    (IGpHello.class,"127.0.0.1",8888);
+            System.out.println(hello.rating(100.0,0.1));
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -1,5 +1,7 @@
 package com.middleaware.rmi.client.rpc;
 
+import com.middleaware.rmi.server.rpc.RpcRequest;
+
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 

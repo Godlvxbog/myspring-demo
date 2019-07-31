@@ -8,4 +8,6 @@ package com.middleaware.rmi.server.rpc;
 public interface IGpHello {
 
     String sayHello(String msg);
+
+    String rating(Double serviceAmount,Double rate);
 }

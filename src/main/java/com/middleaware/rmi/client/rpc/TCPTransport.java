@@ -1,5 +1,7 @@
 package com.middleaware.rmi.client.rpc;
 
+import com.middleaware.rmi.server.rpc.RpcRequest;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -47,6 +49,7 @@ public class TCPTransport {
             ObjectInputStream inputStream=new ObjectInputStream
                     (socket.getInputStream());
             Object result=inputStream.readObject();
+            System.out.println("client获取到的结果为 result =" + result);
             inputStream.close();
             outputStream.close();
             return result;
