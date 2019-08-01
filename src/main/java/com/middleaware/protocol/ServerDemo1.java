@@ -1,4 +1,4 @@
-package com.middleaware.ptocotol.protocol;
+package com.middleaware.protocol;
 
 import java.io.BufferedReader;
 import java.io.IOException;

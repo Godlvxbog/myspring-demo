@@ -1,11 +1,9 @@
-package com.middleaware.ptocotol.protocol;
+package com.middleaware.protocol;
 
-import javax.sound.midi.Soundbank;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.net.ServerSocket;
 import java.net.Socket;
 
 /**

@@ -1,4 +1,4 @@
-package com.middleaware.ptocotol.protocol;
+package com.middleaware.protocol;
 
 import java.io.IOException;
 import java.io.PrintWriter;

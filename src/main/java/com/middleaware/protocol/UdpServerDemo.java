@@ -1,9 +1,8 @@
-package com.middleaware.ptocotol.protocol;
+package com.middleaware.protocol;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
-import java.net.SocketException;
 
 /**
  * 腾讯课堂搜索 咕泡学院
