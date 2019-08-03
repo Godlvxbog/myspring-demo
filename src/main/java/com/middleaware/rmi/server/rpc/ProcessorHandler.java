@@ -6,6 +6,8 @@ import java.io.ObjectOutputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.Socket;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 腾讯课堂搜索 咕泡学院
@@ -17,11 +19,13 @@ import java.net.Socket;
 public class ProcessorHandler implements Runnable{
 
     private Socket socket;
-    private Object service; //服务端发布的服务
+    Map<String ,Object> hanlderMap;
 
-    public ProcessorHandler(Socket socket, Object service) {
+//    private Object service; //服务端发布的服务
+
+    public ProcessorHandler(Socket socket, Map<String ,Object> hanlderMap) {
         this.socket = socket;
-        this.service = service;
+        this.hanlderMap = hanlderMap;
     }
 
     @Override
@@ -61,6 +65,8 @@ public class ProcessorHandler implements Runnable{
         for(int i=0;i<args.length;i++){
             types[i]=args[i].getClass();
         }
+        Object service = hanlderMap.get(request.getClassName());
+
         Method method=service.getClass().getMethod(request.getMethodName(),types);
         return method.invoke(service,args);
     }
