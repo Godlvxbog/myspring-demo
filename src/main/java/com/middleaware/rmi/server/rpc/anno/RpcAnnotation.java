@@ -10,4 +10,6 @@ import java.lang.annotation.Target;
 public @interface RpcAnnotation {
     //对外发布的接口地址
     Class<?> value();
+
+    String version() default  "";
 }

@@ -12,13 +12,14 @@ import java.lang.reflect.Method;
  * 风骚的Michael 老师
  */
 public class RemoteInvocationHandler implements InvocationHandler {
-//    private String host;
-//    private int port;
 
     private IServiceDiscovery serviceDiscovery;
+    private String version;
 
-    public RemoteInvocationHandler(IServiceDiscovery serviceDiscovery) {
+
+    public RemoteInvocationHandler(IServiceDiscovery serviceDiscovery, String version) {
         this.serviceDiscovery = serviceDiscovery;
+        this.version = version;
     }
 
     @Override
@@ -28,7 +29,9 @@ public class RemoteInvocationHandler implements InvocationHandler {
         request.setClassName(method.getDeclaringClass().getName());
         request.setMethodName(method.getName());
         request.setParameters(args);
+        request.setVersion(version);
         //通过tcp传输协议进行传输
+
 
         String serviceAddr = serviceDiscovery.discover(request.getClassName());
         TCPTransport tcpTransport=new TCPTransport(serviceAddr);

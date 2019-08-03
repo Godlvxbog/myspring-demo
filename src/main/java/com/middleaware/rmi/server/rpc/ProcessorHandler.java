@@ -65,7 +65,13 @@ public class ProcessorHandler implements Runnable{
         for(int i=0;i<args.length;i++){
             types[i]=args[i].getClass();
         }
-        Object service = hanlderMap.get(request.getClassName());
+        String serviceName =request.getClassName();
+        String version = request.getVersion();
+        if (version != null && version != ""){
+            serviceName =serviceName + "-"+version;
+        }
+
+        Object service = hanlderMap.get(serviceName);
 
         Method method=service.getClass().getMethod(request.getMethodName(),types);
         return method.invoke(service,args);

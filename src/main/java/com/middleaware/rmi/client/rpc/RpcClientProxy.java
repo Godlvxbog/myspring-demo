@@ -23,12 +23,10 @@ public class RpcClientProxy {
      * @param <T>
      * @return
      */
-    public <T> T clientProxy(final Class<T>
-                                     interfaceCls
-                             ){
+    public <T> T clientProxy(final Class<T> interfaceCls,String version){
         //使用到了动态代理。
         return (T)Proxy.newProxyInstance(interfaceCls.getClassLoader(),
-                new Class[]{interfaceCls},new RemoteInvocationHandler(serviceDiscovery));
+                new Class[]{interfaceCls},new RemoteInvocationHandler(serviceDiscovery,version));
     }
 
 

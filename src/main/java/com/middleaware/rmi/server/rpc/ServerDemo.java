@@ -13,10 +13,11 @@ import java.io.IOException;
 public class ServerDemo {
     public static void main(String[] args) throws IOException {
         IGpHello iGpHello=new GpHelloImpl();
+        IGpHello iGpHello2=new GpHelloImpl2();
         RegisterCenter registerCenter = new RegisterCenterImpl();
 
         RpcServer rpcServer=new RpcServer(registerCenter,"127.0.0.1:8080");
-        rpcServer.bind(iGpHello);
+        rpcServer.bind(iGpHello,iGpHello2);
         rpcServer.publisher();
         System.in.read();
     }

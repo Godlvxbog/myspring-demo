@@ -38,6 +38,11 @@ public class RpcServer {
         for (Object service: services){
             RpcAnnotation rpcAnnotation = service.getClass().getAnnotation(RpcAnnotation.class);
             String serviceName = rpcAnnotation.value().getName();
+
+            String version = rpcAnnotation.version();
+            if (version!= null && !version.equals("")){
+                serviceName=serviceName +"-"+ version;
+            }
             hanlderMap.put(serviceName,service);
         }
     }
