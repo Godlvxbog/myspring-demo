@@ -14,13 +14,18 @@ import java.net.Socket;
  */
 public class TCPTransport {
 
-    private String host;
+//    private String host;
+//
+//    private int port;
+    private String serviceAddr;
 
-    private int port;
+//    public TCPTransport(String host, int port) {
+//        this.host = host;
+//        this.port = port;
+//    }
 
-    public TCPTransport(String host, int port) {
-        this.host = host;
-        this.port = port;
+    public TCPTransport(String serviceAddr) {
+        this.serviceAddr = serviceAddr;
     }
 
     //创建一个socket连接
@@ -28,7 +33,8 @@ public class TCPTransport {
         System.out.println("创建一个新的连接");
         Socket socket;
         try{
-            socket=new Socket(host,port);
+            String[] addrs = serviceAddr.split(":");
+            socket=new Socket( addrs[0],Integer.parseInt( addrs[1]));
             return socket;
         }catch (Exception e){
             e.printStackTrace();

@@ -1,5 +1,6 @@
 package com.middleaware.rmi.client.rpc;
 
+import com.middleaware.rmi.client.rpc.zk.IServiceDiscovery;
 import com.middleaware.rmi.server.rpc.RpcRequest;
 
 import java.lang.reflect.InvocationHandler;
@@ -11,12 +12,13 @@ import java.lang.reflect.Method;
  * 风骚的Michael 老师
  */
 public class RemoteInvocationHandler implements InvocationHandler {
-    private String host;
-    private int port;
+//    private String host;
+//    private int port;
 
-    public RemoteInvocationHandler(String host, int port) {
-        this.host = host;
-        this.port = port;
+    private IServiceDiscovery serviceDiscovery;
+
+    public RemoteInvocationHandler(IServiceDiscovery serviceDiscovery) {
+        this.serviceDiscovery = serviceDiscovery;
     }
 
     @Override
@@ -27,7 +29,9 @@ public class RemoteInvocationHandler implements InvocationHandler {
         request.setMethodName(method.getName());
         request.setParameters(args);
         //通过tcp传输协议进行传输
-        TCPTransport tcpTransport=new TCPTransport(this.host,this.port);
+
+        String serviceAddr = serviceDiscovery.discover(request.getClassName());
+        TCPTransport tcpTransport=new TCPTransport(serviceAddr);
         //发送请求
         return tcpTransport.send(request);
     }

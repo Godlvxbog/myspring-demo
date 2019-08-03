@@ -17,7 +17,7 @@ public class ConnectionDemo {
         try {
             final CountDownLatch countDownLatch=new CountDownLatch(1);
             ZooKeeper zooKeeper=
-                    new ZooKeeper("localhost:2181,localhost:2182,localhost:2183",
+                    new ZooKeeper("localhost:2181",
                             4000, new Watcher() {
                         @Override
                         public void process(WatchedEvent event) {

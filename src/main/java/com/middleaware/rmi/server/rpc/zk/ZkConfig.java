@@ -9,7 +9,7 @@ public class ZkConfig {
 
     public final static String CONNNECTION_STR="127.0.0.1:2181";
 
-    public final static String ZK_REGISTER_PATH="/registrys";
+    public final static String ZK_REGISTER_PATH="/registries";
 
 
 }

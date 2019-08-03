@@ -1,6 +1,9 @@
 package com.middleaware.rmi.client.rpc;
 
+import com.middleaware.rmi.client.rpc.zk.IServiceDiscovery;
+import com.middleaware.rmi.client.rpc.zk.ServiceDiscoveryImpl;
 import com.middleaware.rmi.server.rpc.IGpHello;
+import com.middleaware.rmi.server.rpc.zk.ZkConfig;
 
 import java.io.IOException;
 
@@ -12,14 +15,15 @@ import java.io.IOException;
 public class ClientDemo {
 
     public static void main(String[] args) throws IOException {
-        RpcClientProxy rpcClientProxy=new RpcClientProxy();
+
+        IServiceDiscovery serviceDiscovery =new ServiceDiscoveryImpl(ZkConfig.CONNNECTION_STR);
+        RpcClientProxy rpcClientProxy=new RpcClientProxy(serviceDiscovery);
 
         IGpHello hello= null;
 
         try {
-            hello = rpcClientProxy.clientProxy
-                    (IGpHello.class,"127.0.0.1",8888);
-            System.out.println(hello.rating(100.0,0.1));
+            hello = rpcClientProxy.clientProxy(IGpHello.class);
+            System.out.println(hello.rating(200.0,0.1));
         } catch (Exception e) {
             e.printStackTrace();
         }

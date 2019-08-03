@@ -15,7 +15,7 @@ public class CuratorDemo {
 
     public static void main(String[] args) throws Exception {
         CuratorFramework curatorFramework=CuratorFrameworkFactory.
-                builder().connectString("localhost:2181,localhost:2182,localhost:2183").
+                builder().connectString("localhost:2181").
                 sessionTimeoutMs(4000).retryPolicy(new
                 ExponentialBackoffRetry(1000,3)).
                 namespace("curator").build();
@@ -27,7 +27,7 @@ public class CuratorDemo {
         curatorFramework.create().creatingParentsIfNeeded().
                 withMode(CreateMode.PERSISTENT).forPath("/mic/node1","1".getBytes());
         //删除
-        curatorFramework.delete().deletingChildrenIfNeeded().forPath("/mic/node1");
+//        curatorFramework.delete().deletingChildrenIfNeeded().forPath("/mic/node1");
 
         Stat stat=new Stat();
         curatorFramework.getData().storingStatIn(stat).forPath("/mic/node1");
