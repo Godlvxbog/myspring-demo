@@ -18,7 +18,7 @@ public class GpHelloImpl implements IGpHello{
 
     @Override
     public String rating(Double serviceAmount, Double rate) {
-        return String.valueOf("billAmount = " +serviceAmount * rate);
+        return String.valueOf("8081的node billAmount = " +serviceAmount * rate);
     }
 
 }

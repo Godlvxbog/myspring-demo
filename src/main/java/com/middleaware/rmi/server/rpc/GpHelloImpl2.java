@@ -9,7 +9,8 @@ import com.middleaware.rmi.server.rpc.anno.RpcAnnotation;
  *
  */
 
-@RpcAnnotation(value = IGpHello.class,version ="2.0" )
+//@RpcAnnotation(value = IGpHello.class,version ="2.0" )
+@RpcAnnotation(value = IGpHello.class )
 public class GpHelloImpl2 implements IGpHello{
     @Override
     public String sayHello(String msg) {
@@ -18,7 +19,7 @@ public class GpHelloImpl2 implements IGpHello{
 
     @Override
     public String rating(Double serviceAmount, Double rate) {
-        return String.valueOf("2.0的计价： billAmount = " +serviceAmount * rate);
+        return String.valueOf("8082的node 2.0的计价： billAmount = " +serviceAmount * rate);
     }
 
 }

@@ -22,8 +22,13 @@ public class ClientDemo {
         IGpHello hello= null;
 
         try {
-            hello = rpcClientProxy.clientProxy(IGpHello.class,"2.0");
-            System.out.println(hello.rating(200.0,0.1));
+            for (int i = 0; i <10 ; i++) {
+                hello = rpcClientProxy.clientProxy(IGpHello.class,null);
+                System.out.println(hello.rating(200.0,0.1));
+                Thread.sleep(100);
+            }
+            
+
         } catch (Exception e) {
             e.printStackTrace();
         }
