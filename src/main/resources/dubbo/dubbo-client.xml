@@ -10,6 +10,9 @@
 
     <dubbo:reference interface="com.middleaware.dubbo.server.api.IGpHello"
                      id="gpHelloService"
-                     protocol="dubbo" check ="false" version="1.0.0"/>
+                     protocol="dubbo" check ="false" version="1.0.0"
+                     cluster="failover"  mock="com.middleaware.dubbo.client.TestMock" timeout="1"/>
+
+    <!--cluster="failsafe"-->
 
 </beans>

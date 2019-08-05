@@ -17,13 +17,12 @@ public class Bootstrap {
                 new ClassPathXmlApplicationContext
                         ("dubbo/dubbo-client.xml");
         IGpHello iGpHello = (IGpHello) context.getBean("gpHelloService");
-        String res = iGpHello.rating(100.0,0.02);
-        System.out.println(res);
+//        String res = iGpHello.rating(100.0,0.02);
+//        System.out.println(res);
 
         for (int i = 0; i < 10; i++) {
             String res2 = iGpHello.sayHello("xbog");
             System.out.println(res2);
-            Thread.sleep(1000);
         }
 
         System.in.read();
