@@ -14,9 +14,14 @@
 
 
     <dubbo:service interface="com.middleaware.dubbo.server.api.IGpHello"
-                   ref="gpHelloService" protocol="dubbo" registry="zk1"/>
+                   ref="gpHelloService" protocol="dubbo" registry="zk1" version="1.0.0"/>
+
+    <dubbo:service interface="com.middleaware.dubbo.server.api.IGpHello"
+                   ref="gpHelloService2" protocol="dubbo" registry="zk1" version="1.0.2"/>
+
 
     <bean id="gpHelloService" class="com.middleaware.dubbo.server.provider.GpHelloImpl"/>
+    <bean id="gpHelloService2" class="com.middleaware.dubbo.server.provider.GpHelloImpl2"/>
 
     <bean id="demoService" class="com.middleaware.dubbo.server.provider.DemoService"/>
 </beans>
