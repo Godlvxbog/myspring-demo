@@ -16,6 +16,6 @@
     <dubbo:service interface="com.middleaware.dubbo.server.api.IGpHello"
                    ref="gpHelloService" protocol="dubbo" registry="zk1"/>
 
-    <bean id="gpHelloService" class="com.middleaware.dubbo.server.provider.GpHelloImpl"/>
+    <bean id="gpHelloService" class="com.middleaware.dubbo.server.provider.GpHelloImpl2"/>
 
 </beans>
