@@ -22,10 +22,11 @@ public class ClientDemo1 {
            String line=sin.readLine();
            while(!line.equals("bye")){
                os.println(line);
-               os.flush();
+               os.flush();  //输出出去之后要做清空缓存取
                System.out.println("Client:"+line);
                System.out.println("Server:"+is.readLine());
-               line=sin.readLine();
+
+               line=sin.readLine();//读下一行。
            }
         } catch (IOException e) {
             e.printStackTrace();

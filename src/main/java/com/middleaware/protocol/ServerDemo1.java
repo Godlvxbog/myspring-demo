@@ -33,9 +33,9 @@ public class ServerDemo1 {
             Socket socket=server.accept(); //阻塞过程
 
             BufferedReader is=new BufferedReader
-                    (new InputStreamReader(socket.getInputStream()));
+                    (new InputStreamReader(socket.getInputStream()));//如果请求过来了，收到了一个数据流。
 
-            PrintWriter os=new PrintWriter(socket.getOutputStream());
+            PrintWriter os=new PrintWriter(socket.getOutputStream());//获取输出流。
 
             BufferedReader sin=new BufferedReader(new InputStreamReader(System.in));
 

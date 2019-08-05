@@ -11,7 +11,7 @@ import java.net.DatagramSocket;
  */
 public class UdpServerDemo {
     public static void main(String[] args) throws IOException {
-        //创建服务, 并且接收一个数据包
+        //创建服务, 并且接收一个数据包：DataGramSocket。
         DatagramSocket datagramSocket=new DatagramSocket(8080);
         byte[] receiveData=new byte[1024];
         DatagramPacket receivePacket=
