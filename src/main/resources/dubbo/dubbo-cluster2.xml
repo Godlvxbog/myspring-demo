@@ -10,7 +10,7 @@
     <dubbo:registry id="zk1" address="zookeeper://127.0.0.1:2181" file="tool/zk1"/>
 
 
-    <dubbo:protocol port="20880" name="dubbo"/>
+    <dubbo:protocol port="20882" name="dubbo"/>
 
 
     <dubbo:service interface="com.middleaware.dubbo.server.api.IGpHello"
@@ -18,5 +18,4 @@
 
     <bean id="gpHelloService" class="com.middleaware.dubbo.server.provider.GpHelloImpl"/>
 
-    <bean id="demoService" class="com.middleaware.dubbo.server.provider.DemoService"/>
 </beans>
