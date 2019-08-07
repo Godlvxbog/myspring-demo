@@ -230,7 +230,7 @@ public class GPApplicationContext extends GPDefaultListableBeanFactory implement
         //在这里得到的方法都是原生的方法
         for (Method m : clazz.getMethods()){
 
-            //public .* com\.gupaoedu\.vip\.spring\.demo\.service\..*Service\..*\(.*\)
+            //public .* com\.gupaoedu\.vip\.spring\.demo\.services\..*Service\..*\(.*\)
             //public java.lang.String ModifyService.add(java.lang.String,java.lang.String)
             Matcher matcher = pattern.matcher(m.toString());
             if(matcher.matches()){

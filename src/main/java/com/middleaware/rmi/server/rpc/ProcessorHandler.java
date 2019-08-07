@@ -21,7 +21,7 @@ public class ProcessorHandler implements Runnable{
     private Socket socket;
     Map<String ,Object> hanlderMap;
 
-//    private Object service; //服务端发布的服务
+//    private Object services; //服务端发布的服务
 
     public ProcessorHandler(Socket socket, Map<String ,Object> hanlderMap) {
         this.socket = socket;
