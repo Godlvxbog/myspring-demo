@@ -1,5 +1,7 @@
 package com.middleaware.dubbo.client;
 
+import com.alibaba.dubbo.common.extension.ExtensionLoader;
+import com.alibaba.dubbo.rpc.Protocol;
 import com.middleaware.dubbo.server.api.IGpHello;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -13,6 +15,11 @@ import java.io.IOException;
 public class Bootstrap {
 
     public static void main(String[] args) throws IOException, InterruptedException {
+        testDubbo();
+        testSPi();
+    }
+
+    public static void testDubbo() throws IOException, InterruptedException {
         ClassPathXmlApplicationContext context=
                 new ClassPathXmlApplicationContext
                         ("dubbo/dubbo-client.xml");
@@ -25,7 +32,12 @@ public class Bootstrap {
             System.out.println(res2);
         }
 
-        System.in.read();
+//        System.in.read();
+    }
 
+
+    public static void testSPi(){
+        Protocol protocol = ExtensionLoader.getExtensionLoader(Protocol.class).getExtension("myProtocal");
+        System.out.println(protocol.getDefaultPort());
     }
 }
