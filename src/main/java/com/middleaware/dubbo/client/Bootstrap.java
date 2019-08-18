@@ -37,7 +37,9 @@ public class Bootstrap {
 
 
     public static void testSPi(){
-        Protocol protocol = ExtensionLoader.getExtensionLoader(Protocol.class).getExtension("myProtocal");
-        System.out.println(protocol.getDefaultPort());
+//        Protocol protocol = ExtensionLoader.getExtensionLoader(Protocol.class).getExtension("myProtocal");
+        //默认拿到的是dubboProtocal
+        Protocol defaultProtocal = ExtensionLoader.getExtensionLoader(Protocol.class).getAdaptiveExtension();
+        System.out.println(defaultProtocal);
     }
 }
