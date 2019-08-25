@@ -1,0 +1,3 @@
+#Dubbo Registry Cache
+#Mon Aug 05 21:53:09 CST 2019
+com.middleaware.dubbo.server.api.IGpHello=empty\://192.168.0.103\:20880/com.middleaware.dubbo.server.api.IGpHello?anyhost\=true&application\=dubbo-server&category\=configurators&check\=false&dubbo\=2.5.3&interface\=com.middleaware.dubbo.server.api.IGpHello&methods\=sayHello&owner\=xbog&pid\=1382&side\=provider&timestamp\=1565013188829

@@ -1,4 +1,4 @@
-package com.middleaware.mq.producer;
+package com.middleaware.mq.activemq.consumer;
 
 /**
  * Hello world!

@@ -1,4 +1,4 @@
-package com.middleaware.mq.consumer;
+package com.middleaware.mq.activemq.consumer;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
 

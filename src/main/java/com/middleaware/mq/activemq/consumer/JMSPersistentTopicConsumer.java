@@ -1,4 +1,4 @@
-package com.middleaware.mq.producer;
+package com.middleaware.mq.activemq.consumer;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
 
@@ -9,7 +9,7 @@ import javax.jms.*;
  * 加群获取视频：608583947
  * 风骚的Michael 老师
  */
-public class JMSTopicProducer {
+public class JMSPersistentTopicConsumer {
 
     public static void main(String[] args) {
         ConnectionFactory connectionFactory=
@@ -19,24 +19,22 @@ public class JMSTopicProducer {
         try {
 
             connection=connectionFactory.createConnection();
+            //1持久化id
+            connection.setClientID("xbog-001");
+
             connection.start();
 
-            Session session=connection.createSession(Boolean.TRUE,Session.AUTO_ACKNOWLEDGE);
+            Session session=connection.createSession
+                    (Boolean.TRUE,Session.AUTO_ACKNOWLEDGE);
             //创建目的地
-            Destination destination=session.createTopic("myTopic");
+            Topic destination=session.createTopic("myTopic");
             //创建发送者
-            MessageProducer producer=session.createProducer(destination);
-            producer.setDeliveryMode(DeliveryMode.PERSISTENT);
+            MessageConsumer consumer=session.createDurableSubscriber(destination,"xbog-001");
 
-            //创建需要发送的消息
-            TextMessage message=session.createTextMessage("vip的上课时间是：周三、周六、周日");
+            TextMessage textMessage=(TextMessage) consumer.receive();
+            System.out.println(textMessage.getText());
 
-            //Text   Map  Bytes  Stream  Object
-
-            producer.send(message);
-
-            session.commit();
-//            session.rollback();
+            session.commit(); //消息被确认
 
             session.close();
         } catch (JMSException e) {

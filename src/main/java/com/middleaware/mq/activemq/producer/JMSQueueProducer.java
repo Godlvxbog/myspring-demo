@@ -1,4 +1,4 @@
-package com.middleaware.mq.consumer;
+package com.middleaware.mq.activemq.producer;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
 
@@ -9,33 +9,36 @@ import javax.jms.*;
  * 加群获取视频：608583947
  * 风骚的Michael 老师
  */
-public class JMSPersistentTopicConsumer {
+public class JMSQueueProducer {
 
     public static void main(String[] args) {
+        //创建一个连接工厂：接口是jms，实现是activeMq
         ConnectionFactory connectionFactory=
                 new ActiveMQConnectionFactory
                         ("tcp://127.0.0.1:61616");
         Connection connection=null;
         try {
-
+            //创建一个连接
             connection=connectionFactory.createConnection();
-            //1持久化id
-            connection.setClientID("xbog-001");
-
             connection.start();
 
-            Session session=connection.createSession
-                    (Boolean.TRUE,Session.AUTO_ACKNOWLEDGE);
+            //创建一个会话
+            Session session=connection.createSession(Boolean.TRUE,Session.AUTO_ACKNOWLEDGE);
             //创建目的地
-            Topic destination=session.createTopic("myTopic");
+            Destination destination=session.createQueue("myQueue");
             //创建发送者
-            MessageConsumer consumer=session.createDurableSubscriber(destination,"xbog-001");
+            MessageProducer producer=session.createProducer(destination);
+            //设置持久化：储存在磁盘的。
+            producer.setDeliveryMode(DeliveryMode.PERSISTENT);
 
-            TextMessage textMessage=(TextMessage) consumer.receive();
-            System.out.println(textMessage.getText());
+            for(int i=0;i<10;i++) {
+                //创建需要发送的消息
+                TextMessage message = session.createTextMessage("Hello World:"+i);
+                //Text   Map  Bytes  Stream  Object
+                producer.send(message);
+            }
 
-            session.commit(); //消息被确认
-
+            session.commit();
             session.close();
         } catch (JMSException e) {
             e.printStackTrace();
