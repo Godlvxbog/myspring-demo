@@ -1,4 +1,4 @@
-package com.xbog.javabasic.thread;
+package com.xbog.javabasic.thread.print;
 
 import java.util.concurrent.LinkedBlockingQueue;
 

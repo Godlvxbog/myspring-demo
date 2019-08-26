@@ -1,4 +1,4 @@
-package com.xbog.javabasic.thread;
+package com.xbog.javabasic.thread.print;
 
 /**
  * 腾讯课堂搜索 咕泡学院
