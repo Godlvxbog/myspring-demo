@@ -20,6 +20,7 @@ public class InterruptDemo {
         },"interruptDemo");
         thread.start();
         TimeUnit.SECONDS.sleep(1);
+//        中断线程
         thread.interrupt(); //设置interrupt标识为true
         System.out.println(thread.isInterrupted());
     }

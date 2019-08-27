@@ -9,13 +9,13 @@ import java.util.concurrent.LinkedBlockingQueue;
  */
 public class SaveProcessor extends Thread implements RequestProcessor{
 
-    LinkedBlockingQueue<Request> linkedBlockingQueue=new LinkedBlockingQueue();
+    LinkedBlockingQueue<Request> saveQueue=new LinkedBlockingQueue();
 
     @Override
     public void run() {
         while(true){
             try {
-                Request request=linkedBlockingQueue.take();
+                Request request=saveQueue.take();
                 System.out.println("save data:"+request);
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -25,6 +25,6 @@ public class SaveProcessor extends Thread implements RequestProcessor{
 
     @Override
     public void processorRequest(Request request) {
-        linkedBlockingQueue.add(request);
+        saveQueue.add(request);
     }
 }

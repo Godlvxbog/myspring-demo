@@ -6,10 +6,12 @@ import java.util.concurrent.LinkedBlockingQueue;
  * 腾讯课堂搜索 咕泡学院
  * 加群获取视频：608583947
  * 风骚的Michael 老师
+ *
+ * extends实现了一个线程，自己是一个线程。
  */
 public class PrintProcessor extends Thread implements RequestProcessor{
 
-    LinkedBlockingQueue<Request> linkedBlockingQueue=new LinkedBlockingQueue();
+    LinkedBlockingQueue<Request> printQueue=new LinkedBlockingQueue();
 
     private final RequestProcessor nextProcessor;
 
@@ -21,7 +23,7 @@ public class PrintProcessor extends Thread implements RequestProcessor{
     public void run() {
        while(true){
            try {
-               Request request=linkedBlockingQueue.take();
+               Request request=printQueue.take();
                System.out.println("print data:"+request);
                nextProcessor.processorRequest(request);
            } catch (InterruptedException e) {
@@ -30,8 +32,12 @@ public class PrintProcessor extends Thread implements RequestProcessor{
        }
     }
 
+    /**
+     * 请求 - 添加任务
+     * @param request
+     */
     @Override
     public void processorRequest(Request request) {
-        linkedBlockingQueue.add(request);
+        printQueue.add(request);
     }
 }
