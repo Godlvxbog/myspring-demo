@@ -21,7 +21,7 @@ public class AtomicDemo {
         for(int i=0;i<1000;i++){
             new Thread(AtomicDemo::inc).start();
         }
-        Thread.sleep(4000);
+        Thread.sleep(1000);
         System.out.println("y运行结果："+count);
     }
 }
