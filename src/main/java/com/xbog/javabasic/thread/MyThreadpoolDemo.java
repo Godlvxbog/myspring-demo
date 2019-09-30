@@ -27,7 +27,12 @@ public class MyThreadpoolDemo extends ThreadPoolExecutor{
         ExecutorService executorService = Executors.newFixedThreadPool(5);
         for (int i=0;i< 10;i++){
             Lock lock = new ReentrantLock();
-            lock.lock();//当前线程获取到了锁
+            lock.tryLock();//当前线程获取到了锁
+            lock.lock();
+            System.out.println(((ReentrantLock) lock).getHoldCount());
+            lock.unlock();
+            System.out.println(((ReentrantLock) lock).getHoldCount());
+
 
             executorService.submit(new ChargeProcess());
             lock.unlock();

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans        http://www.springframework.org/schema/beans/spring-beans.xsd        http://code.alibabatech.com/schema/dubbo        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+    <!-- rocketmq配置 -->
+    <bean id="messageListeners" class="com.middleaware.mq.rocketMq.MessageListenerImpl"></bean>
+    <!-- 导入Spring配置文件 -->
+    <bean id="rocketmqConsumer" class="com.alibaba.rocketmq.client.consumer.DefaultMQPushConsumer" init-method="start" destroy-method="shutdown">
+        <property name="consumerGroup" value="${rocketmq.consumerGroup}" />
+        <property name="namesrvAddr" value="${rocketmq.namesrvAddr}" />
+        <property name="messageListener" ref="messageListeners" />
+        <property name="subscription">
+            <map>
+                <entry key="${rocketmq.topic}" value="${rocketmq.tags}" />
+            </map>
+        </property>
+    </bean>
+
+
+    <bean id="rocketMQProducer" class="com.middleaware.mq.rocketMq.RocketMQProducer" init-method="init" destroy-method="destroy">
+    <property name="producerGroup" value="${rocketmq.producer.group}" />
+    <property name="namesrvAddr" value="${rocketmq.namesrvAddr}" />
+    </bean>
+    <!-- 失败重试次数 <property name="retryTimes" value="${rocketmq.producer.retryTimes}" /> -->
+
+
+</beans>

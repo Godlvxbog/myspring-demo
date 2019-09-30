@@ -29,7 +29,7 @@ public class DistributeLock implements Lock, Watcher {
      */
     public DistributeLock() {
         try {
-            zk = new ZooKeeper("127.0.0.1:2181,127.0.0.1:2182,127.0.0.1:2183", 4000, this);
+            zk = new ZooKeeper("127.0.0.1:2181", 4000, this);
             Stat stat = zk.exists(ROOT_LOCK, false);
 
             if (stat == null) {
