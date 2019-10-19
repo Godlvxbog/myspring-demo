@@ -2,6 +2,8 @@ package com.xbog.framework.mybatis.beans;
 
 import lombok.Data;
 
+import java.util.HashMap;
+
 @Data
 public class Test {
 
@@ -49,4 +51,5 @@ public class Test {
     public void setName(String name) {
         this.name = name == null ? null : name.trim();
     }
+
 }
