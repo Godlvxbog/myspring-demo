@@ -1,7 +1,14 @@
 package com.xbog.javabasic.javacore;
 
+import org.redisson.misc.Hash;
+
 import java.lang.ref.SoftReference;
 import java.lang.ref.WeakReference;
+import java.util.HashMap;
+import java.util.Random;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadPoolExecutor;
 
 /**
  * 强引用：公司核心员工不会被裁员
@@ -11,7 +18,7 @@ import java.lang.ref.WeakReference;
  *
  */
 
-public class ReferenceDemo {
+public class ReferenceDemo implements Runnable {
 
     public static void testSoftReference() throws InterruptedException  {
         //100M的缓存数据
@@ -57,11 +64,41 @@ public class ReferenceDemo {
         Thread.sleep(500);
         System.out.println("第二次GC后" + cacheData);
         System.out.println("第二次GC后" + cacheRef.get());
+        System.out.println(1);
+    }
+
+
+    public static void testwhile(){
+        ExecutorService executorService = Executors.newFixedThreadPool(10);
+        for (int i=0; i<10;i++){
+            ReferenceDemo demo1  = new ReferenceDemo();
+            executorService.execute(demo1);
+        }
+
     }
 
     public static void main(String[] args) throws InterruptedException {
-        testWeakReference();
+        testwhile();
+
+
     }
 
+    @Override
+    public void run() {
+
+        while (true) {
+
+
+            String[] strings = new String[10 * 1024 * 1024];
+            strings[1] = "heeloffsfs";
+            strings[2] = "heeloffsfs";
+            strings[3] = "heeloffsfs";
+            strings = null;
+           
+
+            System.out.println(Thread.currentThread().getName() + "=====");
+        }
+
+    }
 }
 

@@ -1,9 +1,8 @@
 package com.xbog.javabasic.javacore;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Hashtable;
-import java.util.Map;
+import java.util.*;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -55,6 +54,30 @@ public class HashMapTest {
 
         ReentrantLock lock = new ReentrantLock();
         lock.newCondition();
+
+
+
+        List list = new ArrayList();
+        list.add(null);
+        System.out.println(list);
+
+
+        Object object = new Object();
+        object.equals(object);
+
+        String string = new String();
+        string.equals(string);
+
+        List list1 = new  LinkedList();
+
+
+        BlockingQueue queue = new ArrayBlockingQueue(1000);
+        try {
+            queue.put("1212");
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
 
     }
 
