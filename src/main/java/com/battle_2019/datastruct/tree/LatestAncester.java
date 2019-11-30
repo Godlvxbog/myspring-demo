@@ -1,8 +1,9 @@
 package com.battle_2019.datastruct.tree;
 
-import battle_2019.datastruct.TreeNode;
 
-import static battle_2019.datastruct.TreeNode.insert;
+import com.battle_2019.datastruct.TreeNode;
+
+import static com.battle_2019.datastruct.TreeNode.insert;
 
 /**
  * 【剑指Offer ：50】

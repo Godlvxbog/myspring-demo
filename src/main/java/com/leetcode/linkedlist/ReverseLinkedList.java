@@ -1,7 +1,7 @@
 package com.leetcode.linkedlist;
 
-import his_2018.alg.linkedlist.Node;
 
+import com.his_2018.alg.linkedlist.CRUDoflink.Node;
 
 /**
  * 题目：206  https://leetcode-cn.com/problems/reverse-linked-list/

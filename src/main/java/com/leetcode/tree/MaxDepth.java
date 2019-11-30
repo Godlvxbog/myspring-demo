@@ -1,6 +1,7 @@
 package com.leetcode.tree;
 
-import battle_2019.datastruct.TreeNode;
+
+import com.battle_2019.datastruct.TreeNode;
 
 /**
  * 树的最大深度：104

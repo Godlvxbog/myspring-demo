@@ -1,6 +1,7 @@
 package com.leetcode.tree;
 
-import battle_2019.datastruct.TreeNode;
+
+import com.battle_2019.datastruct.TreeNode;
 
 /**
  * 翻转二叉树：https://leetcode-cn.com/problems/invert-binary-tree/

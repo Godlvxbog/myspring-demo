@@ -1,6 +1,7 @@
 package com.battle_2019.alg;
 
-import battle_2019.datastruct.MyNode;
+
+import com.battle_2019.datastruct.MyNode;
 
 import java.util.ArrayList;
 

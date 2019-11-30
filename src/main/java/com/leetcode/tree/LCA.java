@@ -1,6 +1,7 @@
 package com.leetcode.tree;
 
-import battle_2019.datastruct.TreeNode;
+
+import com.battle_2019.datastruct.TreeNode;
 
 /**
  * 最近公共祖先：235 https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-search-tree/
