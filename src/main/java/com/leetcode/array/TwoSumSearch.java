@@ -2,7 +2,7 @@ package com.leetcode.array;
 
 //: 167
 
-import battle_2019.searche.BinarySearch;
+import com.battle_2019.searche.BinarySearch;
 
 /**
  * 输入: numbers = [2, 7, 11, 15], target = 9

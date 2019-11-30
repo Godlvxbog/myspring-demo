@@ -1,6 +1,7 @@
 package com.leetcode.stack;
 
-import battle_2019.datastruct.TreeNode;
+
+import com.battle_2019.datastruct.TreeNode;
 
 import java.util.ArrayList;
 import java.util.List;
