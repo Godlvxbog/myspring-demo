@@ -8,9 +8,80 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class HashMapTest {
 
+
+    static class Person {
+        String name ;
+        String age ;
+        String desc;
+
+        public Person(String name, String age, String desc) {
+            this.name = name;
+            this.age = age;
+            this.desc = desc;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getAge() {
+            return age;
+        }
+
+        public void setAge(String age) {
+            this.age = age;
+        }
+
+        public String getDesc() {
+            return desc;
+        }
+
+        public void setDesc(String desc) {
+            this.desc = desc;
+        }
+    }
+
+
+
+
     public static void main(String[] args) {
+
+        HashSet set = new HashSet();
+
+        Person p1 = new Person("xbog","23","test");
+        Person p2 = new Person("xbog2","234","test");
+        Person p3 = new Person("xbog3","2345","test");
+        set.add(p1);
+        set.add(p2);
+        set.add(p3);
+
+        p1.setAge("999");
+
+        set.remove(p1);
+        set.add(p1);
+
+        System.out.println(set);
+
+
+
+        List list = new ArrayList();
+        list.add(1);
+
+
+
+
+
+
         Map<String, String> map = new HashMap<String, String>();//HashMap对象
         Map<String, String> table = new Hashtable<String, String>();//HashTable对象
+
+
+        TreeMap<String, String> treeMap = new TreeMap<>();
+        treeMap.put("1","1");
 
         map.put(null, null);
         System.out.println("hashMap的[key]和[value]均可以为null:" + map.get(null));
@@ -34,9 +105,9 @@ public class HashMapTest {
         }
 
 
-        HashSet set = new HashSet();
-        set.add(new HashMapTest());
-        set.add(new HashMapTest());
+        HashSet set2 = new HashSet();
+        set2.add(new HashMapTest());
+        set2.add(new HashMapTest());
         System.out.println(set.toArray());
 
         ConcurrentHashMap concurrentHashMap = new ConcurrentHashMap();
@@ -57,7 +128,7 @@ public class HashMapTest {
 
 
 
-        List list = new ArrayList();
+        List list2 = new ArrayList();
         list.add(null);
         System.out.println(list);
 
