@@ -15,5 +15,6 @@ public class BigDecimalTest {
 
         BigDecimal refundBill = billAmount.multiply (refundAmount.divide(serviceAmount,2,BigDecimal.ROUND_HALF_UP));
         System.out.println(refundBill.setScale(2,BigDecimal.ROUND_HALF_UP));
+
     }
 }

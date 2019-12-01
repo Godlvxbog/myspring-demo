@@ -52,7 +52,7 @@ public class HwStrTest {
 
         //aboutNum
 
-        int res6= aboutNum("5.5");
+        int res6 = aboutNum("5.5");
         System.out.println(res6);
 
 //        subNum
@@ -74,17 +74,17 @@ public class HwStrTest {
         System.out.println(res9);
 
         //isHasSubString
-        boolean res10 =  isHasSubString("abcdabrc");
+        boolean res10 = isHasSubString("abcdabrc");
         System.out.println(res10);
 
         //比较学生成绩
         List<Student> list11 = new ArrayList<>();
-        Student student1 = new Student(90,1);
-        Student student11 = new Student(90,2);
-        Student student2 = new Student(80,10);
-        Student student21 = new Student(82,9);
-        Student student3 = new Student(70,8);
-        Student student4 = new Student(60,4);
+        Student student1 = new Student(90, 1);
+        Student student11 = new Student(90, 2);
+        Student student2 = new Student(80, 10);
+        Student student21 = new Student(82, 9);
+        Student student3 = new Student(70, 8);
+        Student student4 = new Student(60, 4);
         list11.add(student1);
         list11.add(student11);
         list11.add(student2);
@@ -96,26 +96,85 @@ public class HwStrTest {
         System.out.println(list11);
 
 
-        double res11 =  getCubeRoot(216);
+        double res11 = getCubeRoot(216);
         System.out.println(res11);
+
+
+        int res12 = countOfRabbit(9);
+        System.out.println(res12);
 
     }
 
-    /**思路一：
+
+    private static int countOfRabbit(int month) {
+        int a = 1;//1岁的rabbit
+        int b = 0;//2岁的rabit
+        int c = 0;//3个月及其以上的:可以持续生育
+        while (month-- >= 2) {
+            c += b;
+            b = a;
+            a = c;
+        }
+        return a + b + c;
+    }
+
+
+    /**
+     * 三重循环
+     * 输入砝码种类n;
+     * 输入砝码质量w[i];
+     * 输入砝码个数c[i]；
+     * 输出  可以拼凑的质量个数
+     * w1  w2  w3  w4  ......  wn
+     * c1  c2  c3  c4  ......  cn
+     * 对于前i个砝码：
+     * （不同质量为Q[i])则 Q[i]=Q[i-1]+k*w[i]; -->0<=k<=c[i];
+     * Q[i]在Q[i-1]的基础上，对Q[i-1]个不同的重量，分别添加k个砝码i;
+     * 在添加的过程中去除重复情况
+     * c[i]表示N个不同砝码相应的数量  c[1~~n];
+     * 则（结果）:Q[i]=(Q[i-1]+k*w[i])--(减去)添加过程中重复的个数
+     *
+     * @param fms
+     * @return
+     */
+    private int weightFor(int n, int[] weights, int[] nums) {
+        Set<Integer> set = new HashSet<>();
+
+        //假如只放一种,初始化
+        for (int i = 0; i < nums[0]; i++) {
+            set.add(i * weights[0]);
+        }
+
+        //动态规划:从第二个砝码开始
+        for (int i = 0; i < n; i++) {
+            List<Integer> list = new ArrayList<>(set);
+
+            for (int j = 1; j < nums[i]; j++) {//遍历砝码的个数
+                for (int k = 0; k < list.size(); k++) {
+                    int weighti = list.get(k) + j * weights[i];
+                    set.add(weighti);
+                }
+            }
+        }
+        return set.size();
+    }
+
+    /**
+     * 思路一：
      * 命f(x) = x^3 - a，求解f(x) = x^3 - a = 0。
      * 利用泰勒公式展开，即f(x)在xo处的函数值为：
      * f(x) = f(xo) +f'(xo)(x-xo) = xo^3-a+3xo^2(x-x0) = 0，
      * 解之得：x = xo - (xo^3 - a) / (3xo^2)。
-     *
-     *
+     * <p>
+     * <p>
      * 求平方根用一个套路@_@：
      * 命f(x) = x^2 - a，求解f(x) = x^2 - a = 0。
      * 利用泰勒公式展开，即f(x)在xo处的函数值为：
      * f(x) = f(xo) +f'(xo)(x-xo) = xo^2-a+2xo(x-x0) = 0，
      * 解之得：x = (x+a/xo) / 2。
-     *
-     *
-     *
+     * <p>
+     * <p>
+     * <p>
      * 思路二：
      * 在一定的进度范围内，查找某个元素， f(x)  == input
      * 这里需要考虑输入为负数。 （-1)^3 = -1
@@ -123,21 +182,21 @@ public class HwStrTest {
      * @param input
      * @return
      */
-    private static double getCubeRoot(double input){
+    private static double getCubeRoot(double input) {
         //变量初始化
         double min = 0;
-        double max = Math.abs(input) ;
-        double mid = min + (max - min )/2;
+        double max = Math.abs(input);
+        double mid = min + (max - min) / 2;
 
         //具体逻辑
         final double THRESHOULD = 0.00001;
-        while (Math.abs( max - min )> THRESHOULD){
-            mid = min + (max - min )/2;
-            if (mid * mid * mid > input){
+        while (Math.abs(max - min) > THRESHOULD) {
+            mid = min + (max - min) / 2;
+            if (mid * mid * mid > input) {
                 max = mid;
-            }else if (mid * mid * mid < input){
+            } else if (mid * mid * mid < input) {
                 min = mid;
-            }else {
+            } else {
                 return mid;
             }
         }
@@ -148,15 +207,16 @@ public class HwStrTest {
 
     /**
      * 持有一个滑动串口：i,i+3,作为最小的子字符串
+     *
      * @param str
      * @return
      */
-    private static boolean isHasSubString(String str){
-        for (int i = 0; i < str.length()-2; i++) {
-            String str1 = str.substring(i,i+3);
-            String str2 = str.substring(i+3,str.length());
+    private static boolean isHasSubString(String str) {
+        for (int i = 0; i < str.length() - 2; i++) {
+            String str1 = str.substring(i, i + 3);
+            String str2 = str.substring(i + 3, str.length());
 
-            if (str2.contains(str1)){
+            if (str2.contains(str1)) {
                 return false;
             }
         }
@@ -166,10 +226,11 @@ public class HwStrTest {
 
     /**
      * 按照字典顺序排序：那么这里你可以使用treeset进行排序
+     *
      * @param str
      * @return
      */
-    private static int sortStr(List<String> strs){
+    private static int sortStr(List<String> strs) {
         //check
 
         //handle
@@ -181,37 +242,37 @@ public class HwStrTest {
         return -1;
     }
 
-    private static String delMinCountChar(String str){
+    private static String delMinCountChar(String str) {
         //check
 
         //记录次数的映射
-        HashMap<Character,Integer> map = new HashMap();
+        HashMap<Character, Integer> map = new HashMap();
         for (int i = 0; i < str.length(); i++) {
-            Integer count =  map.get(str.charAt(i));
-            if (count ==null){
+            Integer count = map.get(str.charAt(i));
+            if (count == null) {
                 count = 0;
             }
-            map.put(str.charAt(i) ,count+1);
+            map.put(str.charAt(i), count + 1);
         }
         System.out.println(map);
 
         //计算最小次数的字符。
-        List<Character> characters =  getMinCount(map);
+        List<Character> characters = getMinCount(map);
 
         //打印结果
-        String res ="";
+        String res = "";
         for (int i = 0; i < str.length(); i++) {
-            if (!inMinCount(characters,str.charAt(i))){
-                res +=str.charAt(i);
+            if (!inMinCount(characters, str.charAt(i))) {
+                res += str.charAt(i);
             }
         }
         return res;
     }
 
-    private static boolean inMinCount(List<Character> list, Character c){
+    private static boolean inMinCount(List<Character> list, Character c) {
         boolean res = false;
         for (int i = 0; i < list.size(); i++) {
-            if (c == list.get(i)){
+            if (c == list.get(i)) {
                 res = true;
                 return res;
             }
@@ -219,18 +280,18 @@ public class HwStrTest {
         return res;
     }
 
-    private static List<Character> getMinCount(HashMap<Character,Integer> map ){
+    private static List<Character> getMinCount(HashMap<Character, Integer> map) {
         int min = Integer.MAX_VALUE;
         for (Character character : map.keySet()) {
-            if (map.get(character) < min){
-                min = map.get(character) ;
+            if (map.get(character) < min) {
+                min = map.get(character);
             }
         }
 
         //获取为mincount的字符串。
         List<Character> res = new ArrayList<>();
         for (Character character : map.keySet()) {
-            if (map.get(character) == min){
+            if (map.get(character) == min) {
                 res.add(character);
             }
         }
@@ -238,18 +299,18 @@ public class HwStrTest {
     }
 
 
-    private static int subNum(int num){
+    private static int subNum(int num) {
         //check
 
         String str = String.valueOf(num);
         HashMap map = new HashMap();
 
         String res = "";
-        for (int i = str.length()-1; i >=0 ; i--) {
+        for (int i = str.length() - 1; i >= 0; i--) {
             //获取map中知乎
             Object exist = map.get(str.charAt(i));
-            if(exist == null){
-                map.put(str.charAt(i),true);
+            if (exist == null) {
+                map.put(str.charAt(i), true);
                 res += str.charAt(i);
             }
         }
@@ -266,7 +327,7 @@ public class HwStrTest {
         String[] bits = num.split("\\.");
         //数组处理一定要检查越界判断
 
-        if ( bits ==null  || bits[1] == null || bits[0] == null) {
+        if (bits == null || bits[1] == null || bits[0] == null) {
             return -1;
         }
 
