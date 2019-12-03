@@ -134,7 +134,7 @@ public class HwStrTest {
      * c[i]表示N个不同砝码相应的数量  c[1~~n];
      * 则（结果）:Q[i]=(Q[i-1]+k*w[i])--(减去)添加过程中重复的个数
      *
-     * @param fms
+     * @param
      * @return
      */
     private int weightFor(int n, int[] weights, int[] nums) {
