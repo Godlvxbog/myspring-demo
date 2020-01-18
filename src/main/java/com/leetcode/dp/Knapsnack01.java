@@ -5,13 +5,14 @@ package com.leetcode.dp;
  */
 public class Knapsnack01 {
     static int[][] memo;
+    static int[] memo_single;
 
     public static void main(String[] args) {
         int[] w = {1, 2, 3};
         int[] v = {6, 10, 12};
         int C = 5;
 
-        int res = knapsnack03(w,v,C);
+        int res = knapsnack04(w, v, C);
         System.out.println(res);
 
     }
@@ -131,5 +132,46 @@ public class Knapsnack01 {
             }
         }
         return memo[(n - 1) % 2][c];
+    }
+
+    /**
+     * 空间复杂复杂度降低：
+     * 从一行中，右边往左进行刷新
+     *
+     * @param w
+     * @param v
+     * @param c
+     * @return
+     */
+    private static int bestValue4(int[] w, int[] v, int c) {
+        assert v.length == v.length;
+
+        int n = w.length;
+        if (n == 0) {
+            return 0;
+        }
+
+        //处理最基础的问题:第一行
+        for (int j = 0; j <= c; j++) {
+            //如果背包容量大于第0号物品，那么就是 v[0],否则就是 0
+            memo_single[j] = (j >= w[0] ? v[0] : 0);
+        }
+
+        //递推:考虑0~i的物品使用背包容积j可以放下的物体重量
+        for (int i = 1; i < n; i++) {
+            for (int j = c; j >= w[i]; j--) {
+                memo_single[j] = Math.max(memo_single[j], v[i] + memo_single[j - w[i]]);
+            }
+        }
+        return memo_single[c];
+    }
+
+
+    private static int knapsnack04(int[] w, int[] v, int C) {
+        /**
+         * 考虑每个元素，放在背包中的结果的存放
+         */
+        memo_single = new int[C + 1];
+        return bestValue4(w, v, C);
     }
 }
