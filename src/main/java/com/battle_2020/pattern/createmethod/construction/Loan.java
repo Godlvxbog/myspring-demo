@@ -1,4 +1,4 @@
-package com.battle_2020.pattern.createmethod;
+package com.battle_2020.pattern.createmethod.construction;
 
 /** 这是一个银行贷款的风险评估程序
  * 重构构造方案，
