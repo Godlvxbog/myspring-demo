@@ -19,6 +19,60 @@ public class Loan {
     /*资产策略*/
     private CapitalStartegy capitalStrategy;
 
+    public String getCommit() {
+        return commit;
+    }
+
+    public void setCommit(String commit) {
+        this.commit = commit;
+    }
+
+    public String getOutStanding() {
+        return outStanding;
+    }
+
+    public void setOutStanding(String outStanding) {
+        this.outStanding = outStanding;
+    }
+
+    public String getRiskRating() {
+        return riskRating;
+    }
+
+    public void setRiskRating(String riskRating) {
+        this.riskRating = riskRating;
+    }
+
+    public String getExpiry() {
+        return expiry;
+    }
+
+    public void setExpiry(String expiry) {
+        this.expiry = expiry;
+    }
+
+    public String getMaturity() {
+        return maturity;
+    }
+
+    public void setMaturity(String maturity) {
+        this.maturity = maturity;
+    }
+
+    public CapitalStartegy getCapitalStrategy() {
+        return capitalStrategy;
+    }
+
+    public void setCapitalStrategy(CapitalStartegy capitalStrategy) {
+        this.capitalStrategy = capitalStrategy;
+    }
+
+    /**计算策略
+    * 一旦确定了使用的策略类型，就可以确定策略计算方法
+    */
+
+
+
 
 
     /**
@@ -72,51 +126,51 @@ public class Loan {
 
     }
 
-    /**
-     * 说明：这里需要支持7中贷款模式：但是构造方法是模棱两可的，没有具体的含义，因此拆分不同的构造方法
-     * 并不需要 吧Loan设计成一个抽象类，然后用子类来标识每个不同的类，原因是：
-     * 1、区分不同的Loan不是有不同的字段，有子类的属性，而是字段类型不同，这样会显得非常冗余
-     *
-     * 2、Loan的类型的转换，这样会轻松很多。
-     */
-
-    /**
-     * 重构实践1: 创建定期贷款类型
-     */
-    public Loan createTermLoan(String commit, String riskRating, String maturity,String expiry){
-        return  new Loan(commit,riskRating,maturity,expiry);
-    }
-    public Loan createTermLoan(String commit, String riskRating, String maturity,String expiry,CapitalStartegy capitalStartegy){
-        return  new Loan(commit,null, riskRating,maturity,expiry, capitalStartegy);
-    }
-
-    /**
-     * 创建信用卡类型的贷款：expiry == null
-     * @param commit
-     * @param riskRating
-     * @param maturity
-     * @return
-     */
-    public Loan createRevlover(String commit, String riskRating, String maturity){
-        return  new Loan(commit,riskRating,maturity);
-    }
-    public Loan createRevlover(String commit, String riskRating, String maturity,CapitalStartegy capitalStartegy){
-        return  new Loan(commit,null, riskRating,maturity,capitalStartegy);
-    }
-
-    public Loan createRCL(String commit, String riskRating, String maturity){
-        return  new Loan(commit,riskRating,maturity);
-    }
-    public Loan createRCL(String commit, String riskRating, String maturity,CapitalStartegy capitalStartegy){
-        return  new Loan(commit,null, riskRating,maturity,capitalStartegy);
-    }
-
-    /**
-     * =========重构二=========
-     * 使用工厂方法：重构1解决了的构造方法含有特殊业务知识导致的模棱两可，但是增加了很多方法，对于Loan类的主要职责有点混淆不清了。
-     *
-     * createMethod分散了Loan的职责，所以使用工厂方法剥离出构造方法
-     */
+//    /**
+//     * 说明：这里需要支持7中贷款模式：但是构造方法是模棱两可的，没有具体的含义，因此拆分不同的构造方法
+//     * 并不需要 吧Loan设计成一个抽象类，然后用子类来标识每个不同的类，原因是：
+//     * 1、区分不同的Loan不是有不同的字段，有子类的属性，而是字段类型不同，这样会显得非常冗余
+//     *
+//     * 2、Loan的类型的转换，这样会轻松很多。
+//     */
+//
+//    /**
+//     * 重构实践1: 创建定期贷款类型
+//     */
+//    public Loan createTermLoan(String commit, String riskRating, String maturity,String expiry){
+//        return  new Loan(commit,riskRating,maturity,expiry);
+//    }
+//    public Loan createTermLoan(String commit, String riskRating, String maturity,String expiry,CapitalStartegy capitalStartegy){
+//        return  new Loan(commit,null, riskRating,maturity,expiry, capitalStartegy);
+//    }
+//
+//    /**
+//     * 创建信用卡类型的贷款：expiry == null
+//     * @param commit
+//     * @param riskRating
+//     * @param maturity
+//     * @return
+//     */
+//    public Loan createRevlover(String commit, String riskRating, String maturity){
+//        return  new Loan(commit,riskRating,maturity);
+//    }
+//    public Loan createRevlover(String commit, String riskRating, String maturity,CapitalStartegy capitalStartegy){
+//        return  new Loan(commit,null, riskRating,maturity,capitalStartegy);
+//    }
+//
+//    public Loan createRCL(String commit, String riskRating, String maturity){
+//        return  new Loan(commit,riskRating,maturity);
+//    }
+//    public Loan createRCL(String commit, String riskRating, String maturity,CapitalStartegy capitalStartegy){
+//        return  new Loan(commit,null, riskRating,maturity,capitalStartegy);
+//    }
+//
+//    /**
+//     * =========重构二=========
+//     * 使用工厂方法：重构1解决了的构造方法含有特殊业务知识导致的模棱两可，但是增加了很多方法，对于Loan类的主要职责有点混淆不清了。
+//     *
+//     * createMethod分散了Loan的职责，所以使用工厂方法剥离出构造方法
+//     */
 
 
 
