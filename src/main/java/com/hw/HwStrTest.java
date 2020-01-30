@@ -5,6 +5,13 @@ import java.util.*;
 public class HwStrTest {
 
     public static void main(String[] args) {
+
+        Student seniorStudent = new SeniorStudent();
+
+
+        System.out.println(seniorStudent);
+
+
         String str = "hello hw !";
         try {
             String res = reverse("");

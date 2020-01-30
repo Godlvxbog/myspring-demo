@@ -2,8 +2,12 @@ package com.hw;
 
 public class Student implements Comparable<Student> {
 
-    int score;
+    int score = 50;
     int num;
+
+
+    public Student(){}
+
 
     public Student(int score,int num) {
         this.score = score;
